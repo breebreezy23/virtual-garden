@@ -44,10 +44,20 @@ function fetchWeather() {
                     console.error('Error fetching weather:', error);
                     weatherInfo.textContent = 'Error fetching weather data.';
                 });
+        }, error => {
+            console.error('Geolocation error:', error);
+            useSimulatedWeather();
         });
     } else {
         weatherInfo.textContent = 'Geolocation is not supported by this browser.';
+        useSimulatedWeather();
     }
+}
+
+function useSimulatedWeather() {
+    const simulatedWeatherConditions = ['sunny', 'rain', 'cloudy', 'storm'];
+    currentWeather = simulatedWeatherConditions[Math.floor(Math.random() * simulatedWeatherConditions.length)];
+    weatherInfo.textContent = `Simulated weather: ${currentWeather}`;
 }
 
 fetchWeather();
