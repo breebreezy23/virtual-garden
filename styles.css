@@ -43,3 +43,16 @@ body {
     padding: 10px;
     background-color: #fff;
 }
+
+#weather-container {
+    margin-top: 20px;
+    text-align: center;
+}
+
+#weather-info {
+    border: 1px solid #ccc;
+    padding: 10px;
+    background-color: #fff;
+    margin: 10px auto;
+    width: 300px;
+}
