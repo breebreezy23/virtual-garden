@@ -26,6 +26,7 @@ const plants = [
 
 let plantCount = 0;
 let currentWeather = 'sunny'; // Default weather
+const plantPositions = []; // Store positions of planted seeds
 
 // Fetch real-time weather data
 function fetchWeather() {
@@ -77,8 +78,18 @@ function plantSeed() {
     const plantElement = document.createElement('div');
     plantElement.classList.add('plant');
     plantElement.textContent = plantType.growthStages[0];
-    plantElement.style.left = `${Math.random() * 80}%`;
-    plantElement.style.top = `${Math.random() * 80}%`;
+    // Determine a position that doesn't overlap with existing plants
+    let position;
+    do {
+        position = {
+            left: Math.random() * 80,
+            top: Math.random() * 80
+        };
+    } while (isOverlapping(position));
+
+    plantElement.style.left = `${position.left}%`;
+    plantElement.style.top = `${position.top}%`;
+    plantPositions.push(position);
 
     garden.appendChild(plantElement);
     growPlant(plantElement, plantType);
@@ -86,6 +97,19 @@ function plantSeed() {
     plantElement.addEventListener('click', () => {
         showPlantInfo(plantType);
     });
+}
+
+function isOverlapping(position) {
+    const distanceThreshold = 15; // Minimum distance between plants
+    for (const pos of plantPositions) {
+        const distance = Math.sqrt(
+            Math.pow(position.left - pos.left, 2) + Math.pow(position.top - pos.top, 2)
+        );
+        if (distance < distanceThreshold) {
+            return true;
+        }
+    }
+    return false;
 }
 
 function growPlant(element, plantType) {
