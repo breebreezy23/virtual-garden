@@ -8,10 +8,14 @@ body {
     align-items: center;
     height: 100vh;
     flex-direction: column;
+    color: #333;
 }
 
 #app {
     text-align: center;
+    width: 80%;
+    max-width: 600px;
+    margin: 0 auto;
 }
 
 #garden-container {
@@ -25,6 +29,8 @@ body {
     background-color: #98FB98;
     position: relative;
     margin: 20px auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .plant {
@@ -32,21 +38,50 @@ body {
     height: 50px;
     position: absolute;
     transition: transform 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
 }
 
 #plant-info {
     margin-top: 20px;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#plant-seed {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#plant-seed:hover {
+    background-color: #45a049;
 }
 
 #info-content {
     border: 1px solid #ccc;
     padding: 10px;
-    background-color: #fff;
+    background-color: #fafafa;
+    border-radius: 8px;
 }
 
 #weather-container {
     margin-top: 20px;
     text-align: center;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #e0f7fa;
+    /*Change bg color*/
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 #weather-info {
@@ -55,4 +90,6 @@ body {
     background-color: #fff;
     margin: 10px auto;
     width: 300px;
+    border-radius: 8px;
+    font-size: 16px;
 }
